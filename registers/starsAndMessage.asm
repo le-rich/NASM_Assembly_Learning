@@ -9,8 +9,11 @@ _start:					;linker entry point
 	mov edx,len		;get the length variable and place it in the data register EDX
 	mov ecx,msg		;get the msg data variable and plce it in the data register ECX	
 	mov ebx,1			;file descriptor (stdout) - not sure what this is.
-	mov eax,4			;system call number (sys_write) - also not sure, should be calling something to write.
+	mov eax,4			;system call number (sys_write)
 	int 0x80			;call kernel
+
+								; NOTES: EBX, ECX, EDX, EDI, EBP can be used as arguments to a system call. EAX is used
+								;				 as the system call number
 
 	mov edx,9			;message length again in EDX
 	mov ecx,s2		;messaage to write again in EDX
